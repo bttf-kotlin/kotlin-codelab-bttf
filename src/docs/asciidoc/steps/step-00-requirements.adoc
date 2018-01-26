@@ -1,0 +1,23 @@
+= Step 0 : Pré-requis
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+Avant de venir pour le codelab, merci de bien prendre en compte les différents prérequis.
+
+* Un IDE parmis la liste ci-dessous
+** IDEA : version community ou ultimate
+** Eclipse : version Oxygen minimum
+
+image::doc-and-marty.jpg[Doc and Marty]
+
+On a tout ça à faire avant de venir ?
+
+
+
+Oui c'est pour cela que ça s'appelle un pré-requis.
+
+== Configuration d'Intellij IDEA
+
+== Configuration d'Eclipse Oxygen
