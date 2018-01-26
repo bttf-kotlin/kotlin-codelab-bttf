@@ -1,0 +1,7 @@
+= Step 1 : Les types, les valeurs et les variables
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+Blablabla

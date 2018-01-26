@@ -1,0 +1,15 @@
+= Step 3 : `Class` et `Data Class`
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+== Qu'est ce qu'une `Class` ?
+
+=== Le type Any
+
+=== Le constructeur
+
+== Qu'est ce qu'une `Data Class`
+
+== Déclaration de constructeurs supplémentaires
