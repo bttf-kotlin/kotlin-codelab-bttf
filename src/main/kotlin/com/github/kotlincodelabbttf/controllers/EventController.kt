@@ -12,5 +12,6 @@ class EventController() {
     lateinit var repository: EventRepository
 
     @GetMapping("/events")
-    fun get(): Any = repository.findAll()
+    fun get(): Any = repository.findAll().filter{ it.date.isNotEmpty()}
+
 }
