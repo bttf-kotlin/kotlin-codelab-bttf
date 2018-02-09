@@ -5,8 +5,8 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 data class Event(
     val date: String,
-    @Id val title: String
+    @Id val title: String,
+    val description: String
 )
