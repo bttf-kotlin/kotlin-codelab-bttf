@@ -1,0 +1,26 @@
+= Les bases 
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+On fournit directement un service rest retournant la liste des évènements autour de Back to the Futur.
+
+On explique les élements suivants : 
+
+* val vs var
+** inference automatique
+* class et data class
+
+=== Exercice 1
+
+Ajouter le champ description dans la data class Event
+
+
+* topo sur fonction également
+** one line function
+** focus chaine de charactères dans les nom de méthodes (best practices sur les TUs)
+
+=== Exercice 2
+
+Faire une fonction pour filtrer les évènements sans dates

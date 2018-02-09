@@ -1,0 +1,32 @@
+= Pré-requis
+:toc: left
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+
+== Installation de Java 8
+
+=== Linux
+
+=== Mac
+
+=== Windows
+
+== Installation d'un IDE
+
+=== Linux
+
+=== Mac
+
+=== Windows
+
+== Récupération du projet
+
+git clone url
+git checkout step0
+
+== Builder l'application 
+
+./gradlew
