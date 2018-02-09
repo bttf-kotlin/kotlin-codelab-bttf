@@ -1,0 +1,10 @@
+= Step 3 : Les `companion`, vos meilleurs amis
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+Smart casts (pas besoin de recaster si tu fais un is)
+Interface
+function (single expression + member function)
+function literals

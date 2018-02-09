@@ -1,0 +1,20 @@
+= Step 3 : Les `companion`, vos meilleurs amis
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+== Une peu de théorie
+
+=== range
+
+=== When
+
+
+== Exercice 7
+
+Dans l'exercice 4, nous avons remplacé chaque chiffre de la date par son équivalent en chaîne de charactères.
+Comme vous pouvez le remarquer ce n'est pas comme cela que l'on doit lire une date.
+
+Nous allons donc modifier notre `companion` pour gérer les cas des milliers, des centaines et des dizaines.
+

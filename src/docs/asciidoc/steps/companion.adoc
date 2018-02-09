@@ -1,0 +1,46 @@
+= Step 3 : Les `companion`, vos meilleurs amis
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+
+
+
+== Un peu de théorie
+
+=== `companion`
+
+Un `companion` est une objet déclaré dans une classe
+
+
+== Exercice 3
+
+Nous allons créer notre premier `companion` dans la classe `EventController`.
+
+* companion
+** déporter la fonction de filtre dans un compagnion
+
+== Un peu de théorie
+
+=== Copy et paramètre nommé
+
+* copy
+* paramètre nommé
+* paramètre optionnel
+
+=== Template String
+
+
+
+== Exercice 4
+
+* Créer un tableau de valeurs contenant les chaines de caractères pour les chiffres 0 à 9
+* Pour chaque date remplacer chaque chiffre par son équivalent en chaîne de charactères
+
+
+== Corrigé
+
+----
+TODO
+----
