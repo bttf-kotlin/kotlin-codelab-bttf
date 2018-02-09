@@ -5,54 +5,9 @@ ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../main/kotlin]
 
 
-include::steps/step-00-requirements.adoc[leveloffset=+1]
-include::steps/step-01-val-vs-var.adoc[leveloffset=+1]
+include::steps/requirements.adoc[leveloffset=+1]
+include::steps/val-vs-var-class.adoc[leveloffset=+1]
 include::steps/step-02-class-and-data-class.adoc[leveloffset=+1]
 
 
 
-== Step 0 
-
-On fournit directement un service rest retournant la liste des évènements autour de Back to the Futur.
-
-On explique les élements suivants : 
-
-* val vs var
-** inference automatique
-* class et data class
-
-=== Exercice 1
-
-Ajouter le champ description dans la data class Event
-
-
-* topo sur fonction également
-** one line function
-** focus chaine de charactères dans les nom de méthodes (best practices sur les TUs)
-
-=== Exercice 2
-
-Faire une fonction pour filtrer les évènements sans dates
-
-
-
-== Step 1
-
-Ici on joue avec des TUs. 
-
-
-
-    val vs var
-    type inference
-    Basic Types
-    Class et Data class et comment instancier une classe + utilisation du clone
-    control flow (if else + try catch avec possibilité d'affecter le résultat)
-    when expression (au moins la partie avec un argument)
-    null syntax
-    Smart casts (pas besoin de recaster si tu fais un is)
-    Interface
-    function (single expression + member function)
-    named parameters
-    default parameters
-    function literals
-    late initialization

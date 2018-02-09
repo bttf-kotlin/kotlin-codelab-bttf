@@ -4,23 +4,118 @@ Gautier de Saint Martin Lacaze
 ifndef::imagesdir[:imagesdir: ../images]
 ifndef::sourcedir[:sourcedir: ../../main/kotlin]
 
-On fournit directement un service rest retournant la liste des évènements autour de Back to the Futur.
+== Contexte
 
-On explique les élements suivants : 
+Afin de bien démarrer ce codelab, nous vous avons déjà généré un squelette de projet avec le site https://start.spring.io
 
-* val vs var
-** inference automatique
-* class et data class
-
-=== Exercice 1
-
-Ajouter le champ description dans la data class Event
+Ce site permet d'avoir un projet prêt à l'emploi et nous évitera de perdre du temps dans ce codelab.
+Nous vous invitons si vous ne le connaissez pas à découvrir ce site après le codelab.
 
 
-* topo sur fonction également
-** one line function
+== Un peu de théorie
+
+=== `val` vs `var`
+
+En Kotlin, il existe deux mot clés pour déclarer des variables. Le premier s'appelle `val` et le second `var
+
+`val` est immutable alors que `var` est mutable.
+
+[source,kotlin]
+----
+val name = "kotlin"
+----
+
+Dans ce premier cas, on doit obligatoirement initialiser `name` et on ne pourra pas changer sa valeur.
+Si l'on a besoin de le faire, il faudra utiliser le mot clé `var`.
+
+[source,kotlin]
+----
+var name: String
+name = "kotlin"
+----
+
+Dans ce second cas, grâce au mot clé `var`, on peut initialiser `name` dans la suite du programme.
+
+NOTE: On peut remarquer que dans le cas de `val` le compilateur est capable d'inférer le type de `name`.
+Il n'est pas nécessaire de le préciser.
+Dans le cas de `var` c'est différent. L'initialisation tardive de `name` empêche le compilateur d'inférer le type.
+Il est donc nécessaire de le préciser.
+
+NOTE: Comme vous pouvez le remarquer il n'y a pas besoin de `;` à la fin des instructions.
+
+
+=== Qu'est ce qu'une `Class` ?
+
+
+Une classe Kotlin ressemble à une classe Java à quelques différence.
+
+TODO
+
+=== Qu'est ce qu'une `Data Class` ?
+
+TODO
+
+== Exercice 1
+
+Passons maintenant à la pratique.
+
+Aller dans la classe `Event` et supprimer l'annotation `@JsonIgnoreProperties`.
+
+Lancer l'application via la classe `KotlinCodelabBttfApplication`.
+
+Corriger le problème.
+
+
+== Un peu de théorie
+
+== Les fonctions
+
+Maintenant que nous avons joué rapidement avec notre `Data Class` `Event`, nous allons présenter les fonctions en Kotlin.
+
+Une fonction Kotlin se déclare de la manière suivant :
+
+[source, kotlin]
+----
+fun sum(a: Int, b: Int): Int {
+    return a + b
+}
+----
+<1> *fun* est le mot clé permettant de définir une fonction.
+Contrairement à Java, une fonction Kotlin a la portée publique par défaut.
+<2> *sum* est le nom de la fonction.
+Nous reviendrons sur les noms juste après.
+<3> On déclarer ensuite les paramètres d'entrée.
+Ici `a` et `b` tous les deux de type Int.
+<4> Enfin on indique le type de retour `Int`
+
+Comme vous pouvez le remarquer cette fonction est très simple.
+Il est donc possible en Kotlin de raccourcir la syntaxe d'une telle fonction à une seule ligne.
+Le code aura alors la forme suivante.
+
+[source, kotlin]
+----
+fun sum(a: Int, b: Int) = a + b
+----
+
+
+TODO
+
 ** focus chaine de charactères dans les nom de méthodes (best practices sur les TUs)
 
-=== Exercice 2
+== Exercice 2
 
-Faire une fonction pour filtrer les évènements sans dates
+Dans ce second exercice, nous allons filter automatiquement les événements qui n'ont pas de date dans notre source de données.
+
+Pour cela, accéder à la classe `EventController` et ajouter un filtre sur le retour de `repository. findAll()`.
+
+NOTE: Pour information, l'API collection de Kotlin fourni de nombreuses méthodes utilitaires sur les classes.
+
+
+
+
+
+
+
+
+
+

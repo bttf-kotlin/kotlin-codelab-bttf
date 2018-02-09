@@ -1,0 +1,26 @@
+= Step 3 : Les `companion`, vos meilleurs amis
+Adrien Pessu
+Gautier de Saint Martin Lacaze
+ifndef::imagesdir[:imagesdir: ../images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+
+== Un peu de théorie
+
+=== Gestion du null
+
+=== La mort de l'opérateur ternaire
+
+== Exercice 5
+
+* Ajouter un paramètre optionnel dans le get de `EventController`
+* En fonction du paramètre, utiliser ou non le `companion`
+
+== Un peu de théorie
+
+* Petit focus sur le lateinit
+
+== Exercice 6
+
+Regarder le code `EventController`
+
+
