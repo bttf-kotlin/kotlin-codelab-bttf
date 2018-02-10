@@ -8,14 +8,21 @@ import org.junit.Test
 class LetterTest {
 
     @Test
-    fun `1985 should return one nine eight five`() {
-        val testedDate = "1985"
-
-        val events = arrayListOf<Event>(Event(testedDate, "test", "test"))
+    fun `1985 should return one thousand nine hundred and eighty five`() {
+        val events = arrayListOf<Event>(Event("1985", "test", "test"))
         val event = (EventController.Letter.prettier(events) as List<Event>)[0]
         assertEquals(
             event.date
-            , "one nine eight five")
+            , "one thousand nine hundred and eighty five")
+    }
+
+    @Test
+    fun `1913 should return one thousand nine hundred and thirteen`() {
+        val events = arrayListOf<Event>(Event("1913", "test", "test"))
+        val event = (EventController.Letter.prettier(events) as List<Event>)[0]
+        assertEquals(
+            event.date
+            , "one thousand nine hundred and thirteen")
     }
 
     @Test
