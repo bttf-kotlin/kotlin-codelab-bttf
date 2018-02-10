@@ -4,16 +4,18 @@ import com.github.kotlincodelabbttf.models.Event
 import com.github.kotlincodelabbttf.reporitories.EventRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class EventController() {
+class EventController {
 
     @Autowired
     lateinit var repository: EventRepository
 
     @GetMapping("/events")
-    fun get(): Any = Letter.prettier(repository.findAll())
+    fun get(@RequestParam prettier: String?): Any =
+        if (prettier == null) repository.findAll() else Letter.prettier(repository.findAll())
 
     companion object Letter {
         val unitsString = arrayOf(
