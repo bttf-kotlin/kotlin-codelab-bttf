@@ -1,4 +1,4 @@
-= Step 3 : Les `companion`, vos meilleurs amis
+= Pour aller plus loin
 Adrien Pessu
 Gautier de Saint Martin Lacaze
 ifndef::imagesdir[:imagesdir: ../images]
