@@ -7,7 +7,8 @@ ifndef::sourcedir[:sourcedir: ../main/kotlin]
 
 include::steps/requirements.adoc[leveloffset=+1]
 include::steps/val-vs-var-class.adoc[leveloffset=+1]
-include::steps/step-02-class-and-data-class.adoc[leveloffset=+1]
-
-
+include::steps/companion.adoc[leveloffset=+1]
+include::steps/null-management.adoc[leveloffset=+1]
+include::steps/flow-control.adoc[leveloffset=+1]
+include::steps/move-forward.adoc[leveloffset=+1]
 
