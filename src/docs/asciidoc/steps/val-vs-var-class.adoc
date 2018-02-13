@@ -47,23 +47,72 @@ NOTE: Comme vous pouvez le remarquer il n'y a pas besoin de `;` à la fin des in
 === Qu'est ce qu'une `Class` ?
 
 
-Une classe Kotlin ressemble à une classe Java à quelques différence.
+Une classe Kotlin ressemble à une classe Java à quelques différences prêt.
+On la déclare avec le mot clé `class`
 
-TODO
+----
+class User {
+}
+----
+
+On peut lui déclarer un ou plusieurs contructeurs.
+Le premier constructeur sera appelé constructeur primaire.
+Il est déclaré dans l'entête de la classe.
+
+[source, kotlin]
+----
+class User constructor(firstName: String) {
+}
+----
+
+Dans le cas où le constructeur n'aurait pas d'annotation, il est possible de réduire la syntaxe du constructeur.
+
+[source, kotlin]
+----
+class User (firstName: String) {
+}
+----
+
+
+Vous trouverez plus d'informations si besoin sur https://kotlinlang.org/docs/reference/classes.html#classes[le site officiel de Kotlin].
+
 
 === Qu'est ce qu'une `Data Class` ?
 
-TODO
+Contrairement à une `Class`, une `Data Class` représente un POJO contenant de la donnée.
+Il a donc pour but de stocker des données dans des attributs et éventuellement de fournir des méthodes pour manipuler le contenu de notre objet.
+
+Pour déclarer une `Data Class`, il suffit d'utiliser le mot clé `data` conjointement au mot clé `class`.
+
+[source, kotlin]
+----
+data class User(val name: String, val age: Int)
+----
+
+NOTE: Comme pour les `class`, il n'est pas nécessaire de mettre les accolades lorsqu'il n'y a pas de méthodes dans la classe.
+
+Là où la `Data Class` est très intéressante, c'est que le compilateur va nous aider pour l'avenir en fournissant automatiquement les éléments suivants à notre objet.
+
+* Les méthodes `equals()` et `hashCode()`
+* La méthode `toString()` renvoyant une chaîne de charactères de la forme suivante `User(name=John, age=42)`
+* Une méthode de `copy` (non abordé dans ce codelab)
+* Les méthodes dites `componentN()` qui sont utile lors de l'utilisation du https://kotlinlang.org/docs/reference/multi-declarations.html[destructuring].
+
+Vous trouverez plus d'informations si besoin sur https://kotlinlang.org/docs/reference/data-classes.html[le site officiel de Kotlin].
+
 
 == Exercice 1
 
 Passons maintenant à la pratique.
 
-Aller dans la classe `Event` et supprimer l'annotation `@JsonIgnoreProperties`.
+Aller dans la `Data Class` `Event` et supprimer l'annotation `@JsonIgnoreProperties`.
 
 Lancer l'application via la classe `KotlinCodelabBttfApplication`.
 
-Corriger le problème.
+Corriger le problème que vous rencontrez.
+
+NOTE: Comme vous pouvez le remarquer, `Event` est une `Data Class`.
+La syntaxe est très concise pour créer des POJOs.
 
 
 == Un peu de théorie
@@ -97,10 +146,25 @@ Le code aura alors la forme suivante.
 fun sum(a: Int, b: Int) = a + b
 ----
 
+Vous trouverez plus d'informations sur les fonctions sur https://kotlinlang.org/docs/reference/functions.html#function-declarations[le site officiel de Kotlin].
 
-TODO
 
-** focus chaine de charactères dans les nom de méthodes (best practices sur les TUs)
+NOTE: Il est possible de déclarer une méthode avec des espaces dans le nom.
+C'est une pratique à réserver aux tests mais qui s'avère bien pratique pour écrire des tests explicites.
+
+[source, kotlin]
+----
+class MyTestCase {
+     @Test fun `ensure everything works`() {
+     }
+
+     @Test fun ensureEverythingWorks_onAndroid() {
+     }
+}s
+----
+
+Vous trouverez plus d'informations sur les conventions de nommage des fonctions sur https://kotlinlang.org/docs/reference/coding-conventions.html#function-names[cette page]
+
 
 == Exercice 2
 
