@@ -133,7 +133,7 @@ fun sum(a: Int, b: Int): Int {
 Contrairement à Java, une fonction Kotlin a la portée publique par défaut.
 <2> *sum* est le nom de la fonction.
 Nous reviendrons sur les noms juste après.
-<3> On déclarer ensuite les paramètres d'entrée.
+<3> On peut déclarer ensuite les paramètres d'entrée.
 Ici `a` et `b` tous les deux de type Int.
 <4> Enfin on indique le type de retour `Int`
 
