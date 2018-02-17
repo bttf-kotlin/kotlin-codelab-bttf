@@ -5,21 +5,109 @@ ifndef::imagesdir[:imagesdir: ../images]
 ifndef::sourcedir[:sourcedir: ../../main/kotlin]
 
 
-
-
 == Un peu de théorie
+
+=== Static method
+
+Contrairement à Java, Kotlin ne supporte pas les méthodes statiques pour une classe.
+En fait, les méthodes statiques n'appartiennent pas à l'instance de l'objet mais plutôt au type lui-même.
+De ce fait, il est conseillé en Kotlin de définir les méthodes, que l'on veut statique, directement au niveau du package.
+
+[source, kotlin]
+----
+fun toUpperCase(input:String):String{
+    return if(input.isEmpty()) "" else input.toUpperCase()
+}
+----
+
+La méthode précédente pourra être appelé directement (sans instance d'un objet) de la façon suivante :
+
+[source, kotlin]
+----
+fun main(args: Array<String>) {
+    val message = "Kotlin : le back du futur"
+    println("Initial case: $message")
+    println("Upper case: " + toUpperCase(message))
+}
+----
+
+Puisque l'on vient de voir les méthodes statiques, on peut se demander comment déclarer un singleton.
+Pour rappel, le singleton est un pattern de programmation limitant l'instanciation d'une classe à une unique instance.
+Une fois l'instance créée, elle "vivra" tout au long de la durée de vie de votre programme.
+
+Voici un singleton en Kotlin :
+
+[source, kotlin]
+----
+object MonSingleton {
+    private var count = 0
+    fun callMe():Unit {
+        println("Ça fait $count fois que je suis appelé !")
+    }
+}
+----
+
+Avec l'exemple précédent, on peut appeler directement notre méthode via `MonSingleton.callMe()`.
 
 === `companion`
 
-Un `companion` est une objet déclaré dans une classe
+Maintenant que l'on a présenté la façon de déclarer une méthode statique et un singleton, on peut se demander comment peut on faire pour avoir une méthode statique dans une classe comme en Java.
+C'est à ce moment là que le `companion` (ou `companion object`) est utile.
 
+Ce sera notamment utile dans le cas où l'on veut créer une factory.
+
+[source, kotlin]
+----
+interface UserFactory {
+    fun create(name: String): User
+}
+
+class User private constructor(val login: String) {
+    companion object : UserFactory {
+        override fun create(login: String): User {
+            return User(login)
+        }
+    }
+}
+----
+
+NOTE: Comme vous pouvez le remarquer le constructeur de `User` est privé.
+Il n'est donc pas possible d'instancier `User` en dehors de sa classe.
+
+NOTE: Le `companion` a également accès à toutes les méthodes ainsi que tous les membres de la classe `User`.
+
+NOTE: Il est possible de "nommer" un `companion` en utilisant la syntaxe suivante : `companion object MonCompanion {}`.
+Il sera alors possible d'appeler le companion dans la classe principale via `MonCompanion`.
+
+Pour appeler la méthode de création d'un `User`, vous devez utiliser le code suivant :
+
+[source, kotlin]
+----
+User.Companion.create("myLogin")
+----
+
+Comme c'est un peu long et que Kotlin pense aux développeurs, vous pouvez utiliser le raccourci suivant :
+
+[source, kotlin]
+----
+User.create("myLogin")
+----
+
+Vous trouverez plus d'informations sur les `companion` sur https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects[cette page]
 
 == Exercice 3
 
+Après autant de théorie, repassons à la pratique.
 Nous allons créer notre premier `companion` dans la classe `EventController`.
 
-* companion
-** déporter la fonction de filtre dans un compagnion
+Ce compagnon aura la charge à la fois de remplacer le filtre utilisé dans la méthode `get`, mais également de rendre les données plus "jolie".
+
+* Ajouter le `companion` `Letter` à la classe `EventController`
+* Ajouter une méthode nommée `prettier` au `companion`
+** la méthode prendra en paramètre une liste d'`Event` et retournera le type `Any`
+** la méthode permettra de filter les événements sans date
+* Remplacer le filtre actuellement dans la méthode `get`par votre nouveau `companion`
+
 
 == Un peu de théorie
 
@@ -35,8 +123,11 @@ Nous allons créer notre premier `companion` dans la classe `EventController`.
 
 == Exercice 4
 
+
 * Créer un tableau de valeurs contenant les chaines de caractères pour les chiffres 0 à 9
-* Pour chaque date remplacer chaque chiffre par son équivalent en chaîne de charactères
+** 1 = One
+** ...
+* Dans votre méthode Pour chaque date, remplacer chaque chiffre par son équivalent en chaîne de charactères
 
 
 == Corrigé
