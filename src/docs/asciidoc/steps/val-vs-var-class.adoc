@@ -95,7 +95,7 @@ Là où la `Data Class` est très intéressante, c'est que le compilateur va nou
 
 * Les méthodes `equals()` et `hashCode()`
 * La méthode `toString()` renvoyant une chaîne de charactères de la forme suivante `User(name=John, age=42)`
-* Une méthode de `copy` (non abordé dans ce codelab)
+* Une méthode de `copy` (évoqué plus tard dans ce codelab)
 * Les méthodes dites `componentN()` qui sont utile lors de l'utilisation du https://kotlinlang.org/docs/reference/multi-declarations.html[destructuring].
 
 Vous trouverez plus d'informations si besoin sur https://kotlinlang.org/docs/reference/data-classes.html[le site officiel de Kotlin].

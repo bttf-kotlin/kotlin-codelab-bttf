@@ -63,6 +63,7 @@ asciidoctor {
             'source-highlighter': 'coderay',
             'imagesdir': 'images',
             'toc': 'left',
+			'toclevels': '4',
             'icons': 'font',
             'setanchors': '',
             'idprefix': '',
