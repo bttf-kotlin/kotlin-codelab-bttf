@@ -18,3 +18,7 @@ Comme vous pouvez le remarquer ce n'est pas comme cela que l'on doit lire une da
 
 Nous allons donc modifier notre `companion` pour gérer les cas des milliers, des centaines et des dizaines.
 
+Voici des exmples de ce que l'on attend :
+
+* la date `1984` doit être écrite `one thousand eight hundred eighty four`
+* la date `2018` doit être écrite `two thousand eighteen`
