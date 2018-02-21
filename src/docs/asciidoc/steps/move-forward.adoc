@@ -11,7 +11,7 @@ Isoler la partir conversion de chiffre en lettre et déclarer ces instructions d
 
 voir doc : [https://kotlinlang.org/docs/reference/extensions.html] https://kotlinlang.org/docs/reference/extensions.html
 
-== Exerci 9
+== Exercice 9
 
 Passer la fonction de conversion de chiffre en lettre en tant que paramètre de la fonction de la coroutine.
 
@@ -20,3 +20,4 @@ Smart casts (pas besoin de recaster si tu fais un is)
 Interface
 function (single expression + member function)
 function literals
+----
