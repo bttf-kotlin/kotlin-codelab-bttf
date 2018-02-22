@@ -134,6 +134,13 @@ Vous trouverez plus d'informations sur les `String template` sur https://kotlinl
 
 == Exercice 5
 
+Afin de commancer l'exercice suivant, faites un checkout du step2.
+
+[source]
+----
+git checkout step2
+----
+
 Reprenons notre projet et enrichissons un peu notre code.
 Nous allons maintenant permettre à notre endpoint d'API de gérer deux cas d'affichage.
 Le premier sera l'affichage sans transformation de la date des événements, le second sera celui que l'on a mis en place dans l'exercice précédent.
@@ -141,6 +148,8 @@ Le premier sera l'affichage sans transformation de la date des événements, le 
 * Ajouter un paramètre optionnel dans la méthode get de `EventController`
 * En fonction du paramètre d'entrée, utiliser ou non le `companion`
 ** on vous laisse choisir les valeurs permettant ou non d'utiliser le `companion`
+
+Pour vous aider, il y a des tests unitaires sur step2.
 
 == Un peu de théorie
 

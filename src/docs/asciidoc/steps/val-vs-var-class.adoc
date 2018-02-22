@@ -105,6 +105,13 @@ Vous trouverez plus d'informations si besoin sur https://kotlinlang.org/docs/ref
 
 Passons maintenant à la pratique.
 
+Si ce n'est pas déjà fait, faites un checkout du step0.
+
+[source]
+----
+git checkout step0
+----
+
 Aller dans la `Data Class` `Event` et supprimer l'annotation `@JsonIgnoreProperties`.
 
 Lancer l'application via la classe `KotlinCodelabBttfApplication`.
