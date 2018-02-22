@@ -586,8 +586,8 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#un-peu-de-théorie-5">Un peu de théorie</a>
 <ul class="sectlevel3">
-<li><a href="#gestion-du-null">Gestion du null</a></li>
 <li><a href="#la-mort-de-l-opérateur-ternaire">La mort de l&#8217;opérateur ternaire</a></li>
+<li><a href="#gestion-du-null">Gestion du null</a></li>
 </ul>
 </li>
 <li><a href="#exercice-5">Exercice 5</a></li>
@@ -609,7 +609,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#pour-aller-plus-loin">Pour aller plus loin</a>
 <ul class="sectlevel2">
 <li><a href="#exercice-8">Exercice 8</a></li>
-<li><a href="#exerci-9">Exerci 9</a></li>
+<li><a href="#exercice-9">Exercice 9</a></li>
 </ul>
 </li>
 </ul>
@@ -985,6 +985,14 @@ Comme pour les <code>class</code>, il n&#8217;est pas nécessaire de mettre les 
 <p>Passons maintenant à la pratique.</p>
 </div>
 <div class="paragraph">
+<p>Si ce n&#8217;est pas déjà fait, faites un checkout du step0.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>git checkout step0</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Aller dans la <code>Data Class</code> <code>Event</code> et supprimer l&#8217;annotation <code>@JsonIgnoreProperties</code>.</p>
 </div>
 <div class="paragraph">
@@ -1256,6 +1264,14 @@ Il sera alors possible d&#8217;appeler le companion dans la classe principale vi
 Nous allons créer notre premier <code>companion</code> dans la classe <code>EventController</code>.</p>
 </div>
 <div class="paragraph">
+<p>Afin de commancer l&#8217;exercice suivant, faites un checkout du step1.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>git checkout step1</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Ce compagnon aura la charge à la fois de remplacer le filtre utilisé dans la méthode <code>get</code>, mais également de rendre les données plus "jolie".</p>
 </div>
 <div class="ulist">
@@ -1280,6 +1296,9 @@ Nous allons créer notre premier <code>companion</code> dans la classe <code>Eve
 <p>Remplacer le filtre actuellement dans la méthode <code>get`par votre nouveau `companion</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Pour vous aider, il y a des tests unitaires sur step1.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1480,6 +1499,9 @@ Nous allons maintenant enrichir cette méthode pour transformer les dates du for
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Pour vous aider, il y a des tests unitaires sur step1.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="corrigé">Corrigé</h3>
@@ -1500,41 +1522,265 @@ Gautier de Saint Martin Lacaze</p>
 <div class="sect2">
 <h3 id="un-peu-de-théorie-5">Un peu de théorie</h3>
 <div class="sect3">
-<h4 id="gestion-du-null">Gestion du null</h4>
+<h4 id="la-mort-de-l-opérateur-ternaire">La mort de l&#8217;opérateur ternaire</h4>
+<div class="paragraph">
+<p>Bon ok, c&#8217;est peut être un peu pour le buzz.</p>
+</div>
+<div class="paragraph">
+<p>Pour le moment, on n&#8217;a pas encore parlé des conditions. Les fameux <code>if</code>.
+Tout comme en Java il est possible d&#8217;utiliser le if en tant que gestionnaire du flux d&#8217;éxécution (désolé, nous n&#8217;avons pas trouvé mieux comme traduction française de flow control).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val a = 10
+val b = 11
 
+if (a &lt; b) {
+    print (&quot;Youhou a est inférieur à b&quot;)
+}
+
+// Version avec un else
+if (a &lt; b) {
+    print (&quot;Youhou a est inférieur à b&quot;)
+} else {
+    print (&quot;Youhou b est inférieur à a&quot;)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il existe une autre façon d&#8217;utiliser le <code>if</code> et c&#8217;est pourquoi on peut parle plus ou mois de la fin de l&#8217;opérateur ternaire (le fameux <code>= ? :</code>).
+En Kotlin, <code>if</code> est une expression.
+Il est donc possible de s&#8217;en servir pour remplacer l&#8217;opérateur ternaire.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val max = if (a &gt; b) a else b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On peut même imaginer plus complexe avec l&#8217;exemple suivant.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val max = if (a &gt; b) {
+    print(&quot;Youhou a est le plus grand&quot;)
+    a
+} else {
+    print(&quot;Youhou b est le plus grand&quot;)
+    b
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur les <code>String template</code> sur <a href="https://kotlinlang.org/docs/reference/control-flow.html#if-expression">cette page</a></p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="la-mort-de-l-opérateur-ternaire">La mort de l&#8217;opérateur ternaire</h4>
-
+<h4 id="gestion-du-null">Gestion du null</h4>
+<div class="paragraph">
+<p>Le système de type de Kotlin vise à éliminer le danger des références nulles à partir du code.
+Ce problème est également connu sous le nom de <a href="https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions">The Billion Dollar Mistake</a>.
+Bien entendu on parle de la fameuse NullPointerException de Java (aka NPE).</p>
+</div>
+<div class="paragraph">
+<p>Pour régler ce problème, Kotlin ne permet pas par défaut d&#8217;avoir des références nulles.
+Le code suivant est donc <strong>invalide</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var kotlin: String = &quot;Kotlin for te win !&quot;
+kotlin = null // Le code ne compile pas</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il est possible de déclarer une variable nulle.
+vDans ce cas nous utiliserons une précision syntaxique pour indiquer que l&#8217;on autorise le null.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var java: String? = &quot;Java for the NPE&quot;
+java = null // Dans ce cas le code compile</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Notez bien l&#8217;utilisation du <code>?</code> dans la déclaration de la variable <code>java</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A part la déclaration explicite d&#8217;une variable nulle, il existe d&#8217;autres cas pouvant générer une NPE :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>un appel à <code>throw NullPointerException()</code></p>
+</li>
+<li>
+<p>l&#8217;utilisation de l&#8217;opérateur !! (non présenté dans cette partie cf. le site officiel de Kotlin)</p>
+</li>
+<li>
+<p>un problème de données inconsistantes lors de l&#8217;initialisation</p>
+</li>
+<li>
+<p>l&#8217;intéraction avec du code Java</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alors qu&#8217;est ce qui change entre nos deux morceaux de code précédent.</p>
+</div>
+<div class="paragraph">
+<p>Pour le premier, c&#8217;est simple l&#8217;appel suivant sera valide.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val length = kotlin.length</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour le second, ce n&#8217;est pas le cas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val length = java.length // Erreur de compilation</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le compilateur va nous forcer à gérer les cas de la nullité.
+Et clairement c&#8217;est un gros progrès par rapport au compilateur Java.
+Pour la gestion de la nullité, on peut alors utiliser le <code>if else</code> traditionnel, ou bien le <code>safe call operator</code> <code>?.</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val length: Int? = java?.length // Ici ça compile</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La valeur de <code>length</code> sera soit la taille de <code>java</code> si <code>java</code> est valorisé, ou alors <code>null</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+On peut remarquer que le type de length sera alors <code>Int?</code> et non pas <code>Int</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Là où cela devient très intéressant c&#8217;est que l&#8217;on peut chaîner les opérateurs <code>?.</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">val profileLabel = user?.profile?.label</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dans le cas précédent, <code>profileLabel</code> sera <code>null</code> si <code>user</code> est <code>null</code> ou si <code>profile</code> est <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur les <code>String template</code> sur <a href="https://kotlinlang.org/docs/reference/null-safety.html#nullable-types-and-non-null-types">cette page</a></p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="exercice-5">Exercice 5</h3>
+<div class="paragraph">
+<p>Afin de commancer l&#8217;exercice suivant, faites un checkout du step2.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>git checkout step2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Reprenons notre projet et enrichissons un peu notre code.
+Nous allons maintenant permettre à notre endpoint d&#8217;API de gérer deux cas d&#8217;affichage.
+Le premier sera l&#8217;affichage sans transformation de la date des événements, le second sera celui que l&#8217;on a mis en place dans l&#8217;exercice précédent.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Ajouter un paramètre optionnel dans le get de <code>EventController</code></p>
+<p>Ajouter un paramètre optionnel dans la méthode get de <code>EventController</code></p>
 </li>
 <li>
-<p>En fonction du paramètre, utiliser ou non le <code>companion</code></p>
+<p>En fonction du paramètre d&#8217;entrée, utiliser ou non le <code>companion</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>on vous laisse choisir les valeurs permettant ou non d&#8217;utiliser le <code>companion</code></p>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pour vous aider, il y a des tests unitaires sur step2.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="un-peu-de-théorie-6">Un peu de théorie</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Petit focus sur le lateinit</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Depuis la version 1.2 de Kotlin il est possible d&#8217;initialiser plus tard une <code>val</code> dans le code.
+Pour cela il faut utiliser le modifier <code>lateinit</code>.
+Cela est notamment utile lors de l&#8217;utilisation d&#8217;une lambda dans un constructeur.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">// A cycle of three nodes:
+lateinit var third: Node&lt;Int&gt;
+
+val second = Node(2, next = { third })
+val first = Node(1, next = { second })
+
+third = Node(3, next = { first })</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour éviter les problèmes lors de l&#8217;utilisation des variables déclarée avec le modifier <code>lateinit</code>, il est possible d&#8217;utiliser la méthode  <code>isInitialized</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">println(&quot;isInitialized before assignment: &quot; + this::lateinitVar.isInitialized)
+lateinitVar = &quot;value&quot;
+println(&quot;isInitialized after assignment: &quot; + this::lateinitVar.isInitialized)</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Le modifier <code>lateinit</code> est régulièrement utilisé dans les projets Spring.
+L&#8217;injection de dépendance pourra toujours être effectuée sans problème et le code compilera.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur le <code>lateinit</code> sur <a href="http://kotlinlang.org/docs/reference/whatsnew12.html#lateinit-top-level-properties-and-local-variables">cette page</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="exercice-6">Exercice 6</h3>
 <div class="paragraph">
-<p>Regarder le code <code>EventController</code>.</p>
+<p>Ici nous n&#8217;allons pas coder, mais simplement découvrir l&#8217;utilisation du <code>lateinit</code> dans le cadre d&#8217;un projet Spring.</p>
+</div>
+<div class="paragraph">
+<p>Regarder le code de la classe <a href="https://github.com/bttf-kotlin/kotlin-codelab-bttf/blob/3b2d6914c80f00180ff57b01608576049bc33632/src/main/kotlin/com/github/kotlincodelabbttf/controllers/EventController.kt#L13-L14"><code>EventController</code></a>.</p>
 </div>
 </div>
 </div>
@@ -1548,23 +1794,198 @@ Gautier de Saint Martin Lacaze</p>
 </div>
 <div class="sect2">
 <h3 id="une-peu-de-théorie">Une peu de théorie</h3>
+<div class="paragraph">
+<p>Pour le moment nous avons vu les rapidement les éléments suivants de Kotlin :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>val</code> et <code>var</code></p>
+</li>
+<li>
+<p><code>class</code> et <code>data class</code></p>
+</li>
+<li>
+<p>méthode statique</p>
+</li>
+<li>
+<p><code>companion</code></p>
+</li>
+<li>
+<p>paramètre nommé</p>
+</li>
+<li>
+<p>paramètre par défaut</p>
+</li>
+<li>
+<p>copy</p>
+</li>
+<li>
+<p>string templates</p>
+</li>
+<li>
+<p>if / else</p>
+</li>
+<li>
+<p>gestion de la nullité avec l&#8217;opérateur Elvis</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Nous allons passer maintenant à deux autres éléments nécessaire pour écrire la majorité des algorithmes d&#8217;un programme.</p>
+</div>
 <div class="sect3">
 <h4 id="range">range</h4>
-
+<div class="paragraph">
+<p>Les <code>range</code> sont des expressions permettant de créer rapidement une plage de valeur très rapidement.
+Pour les utiliser, on peut utiliser la méthode <code>rangeTo</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">1.rangeTo(10)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il existe une écrire plus courte via l&#8217;opérateur <code>..</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">1..10</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Il est possible d&#8217;utiliser également les <code>range</code> sur des lettres.
+Par exemple <code>val aToZ = "a".."z"</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On peut tester la présence d&#8217;un élément dans une plage de valeur de la manière suivante.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">if (i in 1..10) { // équivalent à 1 &lt;= i &amp;&amp; i &lt;= 10. Avouez que c'est plus agréable à lire non ?
+    println(i)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur les <code>range</code> sur <a href="https://kotlinlang.org/docs/reference/ranges.html#ranges">cette page</a>.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="when">When</h4>
-
+<div class="paragraph">
+<p>L&#8217;expression <code>when</code> est un équivalent du <code>switch</code> présent dans de nombreux langages de programmation.
+C&#8217;est également une expression fonctionnelle permettant de faire du <a href="https://en.wikipedia.org/wiki/Pattern_matching">pattern matching</a>.</p>
+</div>
+<div class="paragraph">
+<p>Il existe deux façon d&#8217;utiliser le <code>when</code>.
+Soit il prend un argument.
+Soit on ne met pas d&#8217;argument.
+Dans ce second cas, le when permet de remplacer facilement une série de if / else.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;une des écritures les plus simple du <code>when</code> est la suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun whatNumber(x: Int) {
+    when (x) {
+        0 -&gt; println(&quot;x is zero&quot;)
+        1 -&gt; println(&quot;x is 1&quot;)
+        else -&gt; {
+            println(&quot;X is neither 0 or 1&quot;)
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Dans ce premier cas, on prend un paramètre en entrée.
+Le when permet alors de vérifier si l&#8217;on "matche" une des possibilités du <code>when</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>L&#8217;autre façon d&#8217;écrire le when est de ne pas passer d&#8217;arguments.
+Dans ce second cas, la syntaxe est la suivante.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun whichOneIsBigger(x: Int, y: Int) {
+    when {
+        x &lt; y -&gt; println(&quot;x is less than y&quot;)
+        x &gt; y -&gt; println(&quot;X is greater than y&quot;)
+        else -&gt; println(&quot;X must equal y&quot;)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A plusieurs moment, on a indiqué que <code>when</code> était une expression.
+Celle-ci est donc assignable à une variable.
+La syntaxe suivante est valide.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun startsWith(any: Any, prefix: String): Boolean {
+    val result = when (any) {
+        is String -&gt; any.startsWith(prefix)
+        else -&gt; false
+    }
+    return result
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On peut même simplifier le code précédent.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun startsWith(any: Any, prefix: String): Boolean {
+    return when (any) {
+        is String -&gt; any.startsWith(prefix)
+        else -&gt; false
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur l&#8217;expression <code>when</code> sur <a href="https://kotlinlang.org/docs/reference/control-flow.html#when-expression">cette page</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="exercice-7">Exercice 7</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>git checkout step3</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Dans l&#8217;exercice 4, nous avons remplacé chaque chiffre de la date par son équivalent en chaîne de charactères.
 Comme vous pouvez le remarquer ce n&#8217;est pas comme cela que l&#8217;on doit lire une date.</p>
 </div>
 <div class="paragraph">
 <p>Nous allons donc modifier notre <code>companion</code> pour gérer les cas des milliers, des centaines et des dizaines.</p>
+</div>
+<div class="paragraph">
+<p>Pour vous aider, il y a des tests unitaires sur step3.</p>
 </div>
 </div>
 </div>
@@ -1586,7 +2007,7 @@ Gautier de Saint Martin Lacaze</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exerci-9">Exerci 9</h3>
+<h3 id="exercice-9">Exercice 9</h3>
 <div class="paragraph">
 <p>Passer la fonction de conversion de chiffre en lettre en tant que paramètre de la fonction de la coroutine.</p>
 </div>
@@ -1595,9 +2016,7 @@ Gautier de Saint Martin Lacaze</p>
 <pre>Smart casts (pas besoin de recaster si tu fais un is)
 Interface
 function (single expression + member function)
-function literals
-
-:leveloffset!:</pre>
+function literals</pre>
 </div>
 </div>
 </div>
@@ -1606,7 +2025,7 @@ function literals
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-13 20:42:12 +01:00
+Last updated 2018-02-22 12:25:53 +01:00
 </div>
 </div>
 </body>

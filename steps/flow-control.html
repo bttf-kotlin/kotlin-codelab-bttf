@@ -534,19 +534,191 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect1">
 <h2 id="une-peu-de-théorie">Une peu de théorie</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Pour le moment nous avons vu les rapidement les éléments suivants de Kotlin :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>val</code> et <code>var</code></p>
+</li>
+<li>
+<p><code>class</code> et <code>data class</code></p>
+</li>
+<li>
+<p>méthode statique</p>
+</li>
+<li>
+<p><code>companion</code></p>
+</li>
+<li>
+<p>paramètre nommé</p>
+</li>
+<li>
+<p>paramètre par défaut</p>
+</li>
+<li>
+<p>copy</p>
+</li>
+<li>
+<p>string templates</p>
+</li>
+<li>
+<p>if / else</p>
+</li>
+<li>
+<p>gestion de la nullité avec l&#8217;opérateur Elvis</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Nous allons passer maintenant à deux autres éléments nécessaire pour écrire la majorité des algorithmes d&#8217;un programme.</p>
+</div>
 <div class="sect2">
 <h3 id="range">range</h3>
-
+<div class="paragraph">
+<p>Les <code>range</code> sont des expressions permettant de créer rapidement une plage de valeur très rapidement.
+Pour les utiliser, on peut utiliser la méthode <code>rangeTo</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">1.rangeTo(10)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il existe une écrire plus courte via l&#8217;opérateur <code>..</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">1..10</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Il est possible d&#8217;utiliser également les <code>range</code> sur des lettres.
+Par exemple <code>val aToZ = "a".."z"</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On peut tester la présence d&#8217;un élément dans une plage de valeur de la manière suivante.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">if (i in 1..10) { // équivalent à 1 &lt;= i &amp;&amp; i &lt;= 10. Avouez que c'est plus agréable à lire non ?
+    println(i)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur les <code>range</code> sur <a href="https://kotlinlang.org/docs/reference/ranges.html#ranges">cette page</a>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="when">When</h3>
-
+<div class="paragraph">
+<p>L&#8217;expression <code>when</code> est un équivalent du <code>switch</code> présent dans de nombreux langages de programmation.
+C&#8217;est également une expression fonctionnelle permettant de faire du <a href="https://en.wikipedia.org/wiki/Pattern_matching">pattern matching</a>.</p>
+</div>
+<div class="paragraph">
+<p>Il existe deux façon d&#8217;utiliser le <code>when</code>.
+Soit il prend un argument.
+Soit on ne met pas d&#8217;argument.
+Dans ce second cas, le when permet de remplacer facilement une série de if / else.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;une des écritures les plus simple du <code>when</code> est la suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun whatNumber(x: Int) {
+    when (x) {
+        0 -&gt; println(&quot;x is zero&quot;)
+        1 -&gt; println(&quot;x is 1&quot;)
+        else -&gt; {
+            println(&quot;X is neither 0 or 1&quot;)
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Dans ce premier cas, on prend un paramètre en entrée.
+Le when permet alors de vérifier si l&#8217;on "matche" une des possibilités du <code>when</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>L&#8217;autre façon d&#8217;écrire le when est de ne pas passer d&#8217;arguments.
+Dans ce second cas, la syntaxe est la suivante.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun whichOneIsBigger(x: Int, y: Int) {
+    when {
+        x &lt; y -&gt; println(&quot;x is less than y&quot;)
+        x &gt; y -&gt; println(&quot;X is greater than y&quot;)
+        else -&gt; println(&quot;X must equal y&quot;)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A plusieurs moment, on a indiqué que <code>when</code> était une expression.
+Celle-ci est donc assignable à une variable.
+La syntaxe suivante est valide.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun startsWith(any: Any, prefix: String): Boolean {
+    val result = when (any) {
+        is String -&gt; any.startsWith(prefix)
+        else -&gt; false
+    }
+    return result
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On peut même simplifier le code précédent.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">fun startsWith(any: Any, prefix: String): Boolean {
+    return when (any) {
+        is String -&gt; any.startsWith(prefix)
+        else -&gt; false
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous trouverez plus d&#8217;informations sur l&#8217;expression <code>when</code> sur <a href="https://kotlinlang.org/docs/reference/control-flow.html#when-expression">cette page</a>.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="exercice-7">Exercice 7</h2>
 <div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>git checkout step3</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Dans l&#8217;exercice 4, nous avons remplacé chaque chiffre de la date par son équivalent en chaîne de charactères.
 Comme vous pouvez le remarquer ce n&#8217;est pas comme cela que l&#8217;on doit lire une date.</p>
@@ -554,12 +726,15 @@ Comme vous pouvez le remarquer ce n&#8217;est pas comme cela que l&#8217;on doit
 <div class="paragraph">
 <p>Nous allons donc modifier notre <code>companion</code> pour gérer les cas des milliers, des centaines et des dizaines.</p>
 </div>
+<div class="paragraph">
+<p>Pour vous aider, il y a des tests unitaires sur step3.</p>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-13 20:44:20 +01:00
+Last updated 2018-02-22 12:25:53 +01:00
 </div>
 </div>
 </body>
