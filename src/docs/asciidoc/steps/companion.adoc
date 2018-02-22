@@ -96,6 +96,14 @@ Vous trouverez plus d'informations sur les `companion` sur https://kotlinlang.or
 Après autant de théorie, repassons à la pratique.
 Nous allons créer notre premier `companion` dans la classe `EventController`.
 
+Afin de commancer l'exercice suivant, faites un checkout du step1.
+
+[source]
+----
+git checkout step1
+----
+
+
 Ce compagnon aura la charge à la fois de remplacer le filtre utilisé dans la méthode `get`, mais également de rendre les données plus "jolie".
 
 * Ajouter le `companion` `Letter` à la classe `EventController`
@@ -104,6 +112,7 @@ Ce compagnon aura la charge à la fois de remplacer le filtre utilisé dans la m
 ** la méthode permettra de filter les événements sans date
 * Remplacer le filtre actuellement dans la méthode `get`par votre nouveau `companion`
 
+Pour vous aider, il y a des tests unitaires sur step1.
 
 == Un peu de théorie
 
@@ -255,6 +264,7 @@ Nous allons maintenant enrichir cette méthode pour transformer les dates du for
 ** ...
 * Dans votre méthode `prettier`, pour chaque date, remplacer chaque chiffre par son équivalent en chaîne de charactères
 
+Pour vous aider, il y a des tests unitaires sur step1.
 
 == Corrigé
 
