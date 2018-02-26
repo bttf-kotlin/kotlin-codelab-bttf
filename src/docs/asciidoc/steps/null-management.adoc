@@ -66,12 +66,12 @@ Le code suivant est donc *invalide*.
 
 [source, kotlin]
 ----
-var kotlin: String = "Kotlin for te win !"
+var kotlin: String = "Kotlin for the win !"
 kotlin = null // Le code ne compile pas
 ----
 
 Il est possible de déclarer une variable nulle.
-vDans ce cas nous utiliserons une précision syntaxique pour indiquer que l'on autorise le null.
+Dans ce cas nous utiliserons une précision syntaxique pour indiquer que l'on autorise le null.
 
 [source, kotlin]
 ----
