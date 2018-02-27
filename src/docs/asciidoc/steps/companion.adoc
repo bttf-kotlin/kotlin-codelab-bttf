@@ -79,7 +79,7 @@ Pour appeler la méthode de création d'un `User`, vous devez utiliser le code s
 
 [source, kotlin]
 ----
-User.Companion.create("myLogin")
+User.UserFactory.create("myLogin")
 ----
 
 Comme c'est un peu long et que Kotlin pense aux développeurs, vous pouvez utiliser le raccourci suivant :
