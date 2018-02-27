@@ -9,7 +9,7 @@ ifndef::sourcedir[:sourcedir: ../../main/kotlin]
 
 Isoler la partir conversion de chiffre en lettre et déclarer ces instructions dans une fonction en tant qu'Extension de la classe String.
 
-voir doc : [https://kotlinlang.org/docs/reference/extensions.html] https://kotlinlang.org/docs/reference/extensions.html
+voir https://kotlinlang.org/docs/reference/extensions.html[la doc des extensions de classe]
 
 == Exercice 9
 
