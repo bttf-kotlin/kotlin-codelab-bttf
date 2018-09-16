@@ -175,7 +175,7 @@ Vous trouverez plus d'informations sur les conventions de nommage des fonctions 
 
 == Exercice 2
 
-Dans ce second exercice, nous allons filter automatiquement les événements qui n'ont pas de date dans notre source de données.
+Dans ce second exercice, nous allons filtrer automatiquement les événements qui n'ont pas de date dans notre source de données.
 
 Pour cela, accéder à la classe `EventController` et ajouter un filtre sur le retour de `repository. findAll()`.
 
